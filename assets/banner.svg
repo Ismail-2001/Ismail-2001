@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Ismail Sajid — Enterprise Agentic AI Engineer">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070B14"/>
+      <stop offset="55%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#10182A"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0"/>
+      <stop offset="18%" stop-color="#2DD4BF"/>
+      <stop offset="55%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1C2740" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="320" fill="url(#bg)"/>
+  <rect width="1280" height="320" fill="url(#grid)" opacity="0.45"/>
+  <rect x="0" y="0" width="6" height="320" fill="url(#mark)"/>
+
+  <!-- monogram -->
+  <rect x="56" y="58" width="64" height="64" rx="14" fill="none" stroke="url(#mark)" stroke-width="2"/>
+  <text x="88" y="101" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#E6EDF3" letter-spacing="1">IS</text>
+
+  <text x="140" y="86" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#2DD4BF" letter-spacing="6">ISMAIL SAJID</text>
+  <text x="140" y="128" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#F0F6FC" letter-spacing="0.5">Enterprise Agentic AI Engineer</text>
+  <text x="140" y="162" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="16" fill="#8B9BB4">Production AI systems · Distributed orchestration · Policy-bound autonomy</text>
+
+  <rect x="140" y="182" width="520" height="2" fill="url(#line)"/>
+
+  <!-- five architectural planes -->
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="1.6">
+    <rect x="140" y="214" width="118" height="36" rx="8" fill="#0F1A2E" stroke="#2DD4BF" stroke-opacity="0.45"/>
+    <text x="199" y="237" text-anchor="middle" fill="#99F6E4">POLICY</text>
+
+    <rect x="270" y="214" width="118" height="36" rx="8" fill="#0F1A2E" stroke="#67E8F9" stroke-opacity="0.4"/>
+    <text x="329" y="237" text-anchor="middle" fill="#A5F3FC">CONTROL</text>
+
+    <rect x="400" y="214" width="118" height="36" rx="8" fill="#0F1A2E" stroke="#818CF8" stroke-opacity="0.5"/>
+    <text x="459" y="237" text-anchor="middle" fill="#C7D2FE">EXECUTE</text>
+
+    <rect x="530" y="214" width="118" height="36" rx="8" fill="#0F1A2E" stroke="#A78BFA" stroke-opacity="0.45"/>
+    <text x="589" y="237" text-anchor="middle" fill="#DDD6FE">DATA</text>
+
+    <rect x="660" y="214" width="132" height="36" rx="8" fill="#0F1A2E" stroke="#C4B5FD" stroke-opacity="0.4"/>
+    <text x="726" y="237" text-anchor="middle" fill="#EDE9FE">OBSERVE</text>
+  </g>
+
+  <text x="1224" y="292" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#4B5A73" letter-spacing="1.4">KARACHI · AUTOCOMMERCE · GITHUB DEVELOPER PROGRAM</text>
+</svg>
