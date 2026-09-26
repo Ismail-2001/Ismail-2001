@@ -21,11 +21,7 @@
 -->
 
 <div align="center">
-  <img src="./assets/banner.svg" alt="Ismail Sajid — Enterprise Agentic AI Engineer" width="100%" />
-
-  <br/>
-
-  <img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Sans&weight=600&size=20&duration=3200&pause=900&color=99F6E4&center=true&vCenter=true&width=760&height=36&lines=I+don't+ship+chatbots.;I+ship+systems+that+reason+under+policy.;Fail+closed.+Leave+an+audit+trail.+Survive+3AM." alt="I don't ship chatbots. I ship systems that reason under policy." />
+  <img src="./assets/banner.jpg" alt="Ismail Sajid — Enterprise Agentic AI Engineer. Control, Execution, Policy, Data, Observability." width="100%" />
 
   <br/>
 
@@ -41,7 +37,7 @@ I am an **Enterprise Agentic AI Engineer** based in Karachi. I design the layer 
 
 Most “AI agents” are prompt chains with a UI. Mine are **distributed systems**. They run behind policy (OPA/Rego), execute in sandboxes (gVisor), persist through Temporal/LangGraph checkpoints, fall back across model providers, and escalate to a human when confidence or blast radius demands it.
 
-I founded **[AutoCommerce](https://autocommerce.agency)** — an AI operating layer for ecommerce. The public GitHub is the engineering proof: 50+ systems spanning agent orchestration, security operations, RAG in air-gapped environments, and the evaluation/resilience tooling required to ship any of it.
+I founded **[AutoCommerce](https://autocommerce.agency)** — an AI operating layer for ecommerce. The public GitHub is the engineering proof: agent orchestration, security operations, air-gapped RAG, and the evaluation / resilience tooling required to ship any of it.
 
 > **Thesis.** Autonomy is not a feature. It is a privilege an agent *earns* — through evals, streak-based graduation, hard spend/action limits, and an immutable paper trail.
 
@@ -60,37 +56,49 @@ Open these four repositories. They are the argument.
 
 If you only have time for one: **[E-GAOP](https://github.com/Ismail-2001/The-Kubernetes-of-AI-Agents)**.
 
+<p align="center">
+  <a href="https://github.com/Ismail-2001/The-Kubernetes-of-AI-Agents"><img src="https://github-readme-stats.vercel.app/api/pin/?username=Ismail-2001&repo=The-Kubernetes-of-AI-Agents&theme=transparent&hide_border=true&bg_color=0B1220&title_color=2DD4BF&icon_color=818CF8&text_color=C9D1D9" alt="E-GAOP" /></a>
+  <a href="https://github.com/Ismail-2001/ecom-ops-automation-system"><img src="https://github-readme-stats.vercel.app/api/pin/?username=Ismail-2001&repo=ecom-ops-automation-system&theme=transparent&hide_border=true&bg_color=0B1220&title_color=2DD4BF&icon_color=818CF8&text_color=C9D1D9" alt="OpsIQ" /></a>
+</p>
+<p align="center">
+  <a href="https://github.com/Ismail-2001/Autonomous-Secure-AI-Operations-Center"><img src="https://github-readme-stats.vercel.app/api/pin/?username=Ismail-2001&repo=Autonomous-Secure-AI-Operations-Center&theme=transparent&hide_border=true&bg_color=0B1220&title_color=2DD4BF&icon_color=818CF8&text_color=C9D1D9" alt="A-SOC" /></a>
+  <a href="https://github.com/Ismail-2001/Air-Gapped-Rag-System"><img src="https://github-readme-stats.vercel.app/api/pin/?username=Ismail-2001&repo=Air-Gapped-Rag-System&theme=transparent&hide_border=true&bg_color=0B1220&title_color=2DD4BF&icon_color=818CF8&text_color=C9D1D9" alt="Air-Gapped RAG" /></a>
+</p>
+
 ---
 
 ## How I think about agents
 
 The difference between a demo and a system is not the model. It is everything around the model.
 
-```
-                    ┌──────────────────────────────────────────────┐
-                    │                 CLIENT / API                 │
-                    │     JWT · Rate limit · CORS · Zod / Pydantic │
-                    └──────────────────────┬───────────────────────┘
-                                           │
-     ┌─────────────────────────────────────▼─────────────────────────────────────┐
-     │                              CONTROL PLANE                                │
-     │   Temporal / LangGraph   ·   HITL gates   ·   DLQ   ·   Secret store      │
-     └─────────────────────────────────────┬─────────────────────────────────────┘
-                                           │
-     ┌─────────────────────────────────────▼─────────────────────────────────────┐
-     │                             EXECUTION PLANE                               │
-     │   Multi-model router   ·   Tool proxy (PII · SSRF · budget)   ·   gVisor  │
-     └─────────────────────────────────────┬─────────────────────────────────────┘
-                                           │
-     ┌───────────────┬─────────────────────┼──────────────────────┬──────────────┐
-     │  POLICY PLANE │                     │                      │  DATA PLANE  │
-     │  OPA / Rego   │                     │                      │  PG + Redis  │
-     │  fail-closed  │                     │                      │  pgvector    │
-     └───────┬───────┘                     │                      └──────┬───────┘
-             │                             │                             │
-             └──────────────►   OBSERVABILITY PLANE   ◄──────────────────┘
-                                OTel · Prometheus · Grafana · Tempo · Loki
-                                traces, cost, evals, replay
+```mermaid
+flowchart TB
+  subgraph Control["CONTROL PLANE"]
+    API["API / gRPC / JWT"]
+    WF["Temporal · LangGraph · HITL · DLQ"]
+  end
+  subgraph Execution["EXECUTION PLANE"]
+    LLM["Multi-model router + circuit breaker"]
+    TOOL["Tool proxy — PII · SSRF · budget"]
+    SBX["gVisor / ephemeral sandbox"]
+  end
+  subgraph Policy["POLICY — fail closed"]
+    OPA["OPA / Rego admission + runtime"]
+  end
+  subgraph Data["DATA PLANE"]
+    PG["PostgreSQL + pgvector"]
+    RD["Redis"]
+  end
+  subgraph Obs["OBSERVABILITY"]
+    TEL["OTel · Prometheus · Grafana · Tempo · Loki"]
+    EV["Evals · cost · replay · audit"]
+  end
+  Control --> Execution
+  Execution --> Data
+  Control -.-> Policy
+  Execution -.-> Policy
+  Control --> Obs
+  Execution --> Obs
 ```
 
 | Naive agent | Production agent |
@@ -249,7 +257,7 @@ Open to **staff / principal Agentic AI**, **AI platform**, and **applied researc
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=Ismail-2001&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0B1220&title_color=2DD4BF&icon_color=818CF8&text_color=C9D1D9&ring_color=2DD4BF" alt="GitHub stats" height="165" />
+<img src="https://github-readme-stats.vercel.app/api?username=Ismail-2001&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&bg_color=0B1220&title_color=2DD4BF&icon_color=818CF8&text_color=C9D1D9&ring_color=2DD4BF" alt="GitHub stats" height="165" />
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ismail-2001&layout=compact&theme=tokyonight&hide_border=true&bg_color=0B1220&title_color=2DD4BF&text_color=C9D1D9" alt="Top languages" height="165" />
 
 <br/>
